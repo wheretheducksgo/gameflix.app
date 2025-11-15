@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>My Subscriptions</title>
+</head>
+<body>
+<h2>My Subscriptions</h2>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>Type</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Status</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="sub : ${subscriptions}">
+        <td th:text="${sub.type}"></td>
+        <td th:text="${sub.startDate}"></td>
+        <td th:text="${sub.endDate}"></td>
+        <td th:text="${sub.active ? 'Active' : 'Cancelled'}"></td>
+        <td>
+            <a th:if="${sub.active}" th:href="@{/subscriptions/cancel/{id}(id=${sub.id})}">Cancel</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<form th:action="@{/subscriptions/subscribe}" method="post">
+    <label>New Subscription Type:</label>
+    <input type="text" name="type"/>
+    <button type="submit">Subscribe</button>
+</form>
+
+<p><a th:href="@{/}">Home</a></p>
+</body>
+</html>

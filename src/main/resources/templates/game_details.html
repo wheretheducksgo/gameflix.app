@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${game != null ? game.title : 'Game Details'}">Game Details</title>
+</head>
+<body>
+<h2 th:text="${game.title}">Game Title</h2>
+<p><strong>Genre:</strong> <span th:text="${game.genre}"></span></p>
+<p><strong>Developer:</strong> <span th:text="${game.developer}"></span></p>
+<p><strong>Release Year:</strong> <span th:text="${game.releaseYear}"></span></p>
+<p><strong>Description:</strong> <span th:text="${game.description}"></span></p>
+
+<p><a th:href="@{/catalog}">Back to Catalog</a></p>
+</body>
+</html>
