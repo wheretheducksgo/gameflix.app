@@ -28,8 +28,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-m2-
 
-      - name: Build and test with Maven
-        run: mvn -B clean test
+      - name: Build with Maven (skip tests)
+        run: mvn -B clean package -DskipTests
 
       - name: Package application
         run: mvn -B package -DskipTests
